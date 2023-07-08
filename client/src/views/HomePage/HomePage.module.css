@@ -1,0 +1,8 @@
+.container {
+  background-image: url(https://img.freepik.com/vector-premium/patrones-fisuras-perros-divertidos-dibujos-animados_373337-472.jpg?w=740);
+  background-attachment: fixed;
+  background-repeat: repeat-x;
+  background-position: center center;
+
+  min-height: 100vh;
+}

@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: static;
+  background-color: #e6a9b6da;
+  padding: 10px;
+  top: 1px;
+  left: 0;
+  right: 0;
+}

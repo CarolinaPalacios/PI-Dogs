@@ -1,0 +1,105 @@
+.container {
+  background-image: url("../../assets/perro2.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-size: cover;
+  background-position: center center;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.title {
+  position: absolute;
+  color: #3b8183;
+  right: 10%;
+  top: 15%;
+}
+
+.text {
+  position: absolute;
+  top: 30%;
+  right: 11%;
+  font-size: 20px;
+  color: #3b8183;
+  font-weight: 500;
+}
+.landingButton {
+  background-color: #c06c8491;
+  padding: 20px;
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  right: 22%;
+  top: 50%;
+  box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.75);
+}
+
+.landingButton:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+  background-color: #c06c84c2;
+}
+
+.logoButton {
+  width: 50px;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+.socialLinks {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.socialLinks a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.socialLinks img {
+  width: 30px;
+  height: 30px;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 24px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+
+  .landingButton {
+    padding: 15px;
+  }
+}
+
+/* Media queries para dispositivos aún más pequeños */
+@media (max-width: 480px) {
+  .title {
+    font-size: 20px;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+
+  .landingButton {
+    padding: 10px;
+    left: 10%;
+    top: 45%;
+  }
+}
