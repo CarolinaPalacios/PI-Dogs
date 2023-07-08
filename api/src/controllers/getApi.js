@@ -18,6 +18,7 @@ const getApi = async () => {
           temperament: temperament
             ? temperament.split(",").map((temp) => temp.trim())
             : [], // Si la propiedad temperament existe, se divide por comas y se eliminan los espacios vacíos alrededor de cada temperamento. De lo contrario, se asigna un arreglo vacío.
+          DBCreated: false,
         };
       }
     );

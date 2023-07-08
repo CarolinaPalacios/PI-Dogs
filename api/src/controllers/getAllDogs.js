@@ -1,5 +1,5 @@
 const getApi = require("./getApi");
-const getFromDb = require("./getFromDb");
+const getFromDb = require("./getFromDB");
 
 // RUTA GET /dogs
 
@@ -9,7 +9,6 @@ const getAllDogs = async () => {
   // Concatenar perros de la API y de la base de datos
 
   const dogs = [...apiDogs, ...dbDogs]; //En esta línea se concatenan los perros de la API y los de la DB en un solo arreglo
-
   return dogs;
 };
 

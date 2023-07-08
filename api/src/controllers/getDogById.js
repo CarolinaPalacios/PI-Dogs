@@ -7,9 +7,17 @@ const getDogById = async (req, res) => {
     const dogs = await getAllDogs();
 
     if (id) {
-      const dogId = await dogs.find((dog) => dog.id === parseInt(id));
-      return dogId
-        ? res.status(200).json(dogId)
+      let dog;
+      if (!isNaN(id)) {
+        // Si el id es un entero, buscar por id como número
+        dog = await dogs.find((dog) => dog.id === parseInt(id));
+      } else {
+        // Si el id no es un entero, buscar por id como cadena de texto (UUID)
+        dog = await dogs.find((dog) => dog.id === id);
+      }
+
+      return dog
+        ? res.status(200).json(dog)
         : res.status(404).send("Dog not found");
     }
   } catch (error) {
