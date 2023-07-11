@@ -3,33 +3,24 @@ const getAllTemperaments = require("./getAllTemperaments");
 
 const createDog = async (req, res) => {
   try {
-    const {
-      name,
-      heightMin,
-      heightMax,
-      weightMin,
-      weightMax,
-      age,
-      image,
-      temperament,
-      createdInDB,
-    } = req.body;
+    const { name, height, weight, age, image, temperaments, createdInDB } =
+      req.body;
 
     const newDog = await Dog.create({
       name,
       age,
       image,
-      height: `${heightMin} - ${heightMax}`,
-      weight: `${weightMin} - ${weightMax}`,
+      height,
+      weight,
       createdInDB: createdInDB,
     });
 
-    if (temperament && temperament.length > 0) {
+    if (temperaments && temperaments.length > 0) {
       const temperamentCount = await Temperament.count();
       //count() realizar una consulta y contar el número de registros que cumplen ciertas condiciones en una tabla de la base de datos
       if (temperamentCount === 0) await getAllTemperaments();
 
-      await newDog.addTemperaments(temperament);
+      await newDog.addTemperament(temperaments);
       // se establece la relación entre el perro recién creado (newDog) y los temperamentos encontrados. Esto se realiza utilizando el método add, establece los temperamentos asociados al perro en la tabla de relaciones de muchos a muchos.
     }
 
