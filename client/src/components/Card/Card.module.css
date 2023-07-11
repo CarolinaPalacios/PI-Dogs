@@ -10,6 +10,11 @@
   padding: 20px;
   margin: 20px;
   background-color: #cad9ca;
+  transition: transform 0.3s;
+}
+
+.container:hover {
+  transform: scale(1.1);
 }
 
 .cardImage {

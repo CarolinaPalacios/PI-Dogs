@@ -1,11 +1,7 @@
 import { Route, Routes, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import { LandingPage, HomePage, DetailPage, FormPage } from "./views";
 import NavBar from "./components/NavBar/NavBar";
 import "./App.css";
-
-const URL = `http://localhost:3001/dogs`;
 
 function App() {
   const location = useLocation();

@@ -1,0 +1,12 @@
+.paginationButton {
+  font-family: "Montserrat";
+  margin: 10px;
+  background-color: rgb(211, 145, 181);
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.pageNumber {
+  font-family: "Montserrat";
+  font-weight: bold;
+}

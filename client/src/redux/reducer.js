@@ -52,6 +52,7 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         dogs: [...state.dogs, payload], //incluye todos los elementos existentes en state.dogs, y luego agrega el nuevo perro payload
+        dogsCopy: [...state.dogs, payload],
       };
 
     case DELETE_DOG:

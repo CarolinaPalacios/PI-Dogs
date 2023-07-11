@@ -6,7 +6,7 @@ import Pagination from "../Pagination/Pagination";
 import style from "./CardsContainer.module.css";
 
 const CardsContainer = () => {
-  const allDogs = useSelector((state) => state.dogs);
+  const allDogs = useSelector((state) => state.dogsCopy);
   const DOGS_PER_PAGE = 8;
   const totalPages = Math.ceil(allDogs.length / DOGS_PER_PAGE);
   const [currentPage, setCurrentPage] = useState(1);

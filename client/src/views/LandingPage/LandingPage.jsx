@@ -9,8 +9,8 @@ const LandingPage = () => {
     <div className={style.container}>
       <h1 className={style.title}>Welcome to the DogApp!</h1>
       <p className={style.text}>
-        If you want to know more about, <br /> click on the button to go to our
-        home.
+        If you want to know more about us, <br /> click on the button to go to
+        our home.
       </p>
       <NavLink to="/home" className={style.navLinktoHome}>
         <button className={style.landingButton}>

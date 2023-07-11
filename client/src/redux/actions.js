@@ -70,7 +70,7 @@ export const getTemperaments = () => {
       const { data } = await axios.get(endpoint);
       return dispatch({
         type: GET_TEMPERAMENTS,
-        payload: [...data?.map((temp) => temp.name)],
+        payload: [...data],
       });
     } catch (error) {
       console.log(error.message);
@@ -78,11 +78,12 @@ export const getTemperaments = () => {
   };
 };
 
-export const createDog = (dog) => {
+export const createDog = (newDog) => {
   const endpoint = "http://localhost:3001/dogs";
+  console.log(newDog);
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(endpoint, dog);
+      const { data } = await axios.post(endpoint, newDog);
       dispatch({
         type: CREATE_DOG,
         payload: data,
