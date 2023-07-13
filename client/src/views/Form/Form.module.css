@@ -1,9 +1,20 @@
 .container {
-  background-color: #e2d7dc8e;
-  border: 1px solid #ccc;
-  padding: 20px;
+  background-image: url(https://img.freepik.com/vector-premium/herramientas-aseo-patron-costuras-cabeza-corgi-sobre-fondo-blanco_505573-121.jpg);
+  background-repeat: repeat-x;
+  background-size: contain;
+  padding: 22px;
+  height: 600px;
   display: flex;
   flex-direction: column;
+}
+
+.subContainer {
+  background-color: #ccccccbe;
+  background-position: center;
+}
+
+.title {
+  color: #2d6163;
 }
 
 .label {
@@ -11,7 +22,8 @@
   margin-bottom: 10px;
   padding: 5px;
   display: flex;
-  margin-left: 20px;
+  margin-left: 300px;
+  color: #3b8183;
 }
 
 .input {
@@ -28,7 +40,7 @@
   border-radius: 3px;
   margin-bottom: 10px;
   padding: 5px;
-  width: 145px;
+  width: 242px;
   position: absolute;
   left: 500px;
 }
@@ -55,4 +67,26 @@
   max-height: 15px;
   overflow: hidden;
   color: rgb(150, 15, 15);
+  position: fixed;
+  left: 750px;
+}
+
+.span {
+  font-size: 11px;
+  padding: 0;
+  color: rgb(150, 15, 15);
+  position: absolute;
+  left: 780px;
+  margin-top: 5px;
+}
+
+.tempButton {
+  margin: 2px;
+  font-size: 15px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  color: rgb(150, 15, 15);
+  position: relative;
+  left: 310px;
 }

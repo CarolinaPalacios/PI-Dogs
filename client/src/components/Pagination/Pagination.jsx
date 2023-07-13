@@ -15,8 +15,23 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     handlePageChange(currentPage + 1);
   };
 
+  const handleFirstPage = () => {
+    if (currentPage !== 1) handlePageChange(1);
+  };
+
+  const handleLastPage = () => {
+    if (currentPage !== totalPages) handlePageChange(totalPages);
+  };
+
   return (
     <div className={style.pagination}>
+      <button
+        className={style.paginationButton}
+        onClick={handleFirstPage}
+        disabled={currentPage === 1}
+      >
+        First Page
+      </button>
       <button
         className={style.paginationButton}
         onClick={handlePrevPage}
@@ -24,13 +39,22 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       >
         Previous
       </button>
-      <span className={style.pageNumber}>{currentPage}</span>
+      <span className={style.pageNumber}>
+        {currentPage} of {totalPages}
+      </span>
       <button
         className={style.paginationButton}
         onClick={handleNextPage}
         disabled={currentPage === totalPages}
       >
         Next
+      </button>
+      <button
+        className={style.paginationButton}
+        onClick={handleLastPage}
+        disabled={currentPage === totalPages}
+      >
+        Last Page
       </button>
     </div>
   );

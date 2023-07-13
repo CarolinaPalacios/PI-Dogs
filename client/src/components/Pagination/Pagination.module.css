@@ -6,6 +6,11 @@
   border-radius: 10px;
 }
 
+.paginationButton:hover {
+  cursor: pointer;
+  background-color: rgb(211, 133, 176);
+}
+
 .pageNumber {
   font-family: "Montserrat";
   font-weight: bold;

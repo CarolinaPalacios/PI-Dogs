@@ -5,8 +5,10 @@ const Card = ({
   name,
   age,
   image,
-  height,
-  weight,
+  minHeight,
+  maxHeight,
+  minWeight,
+  maxWeight,
   temperament,
   createdInDB,
 }) => {
@@ -23,7 +25,8 @@ const Card = ({
           Temperaments: {temperament?.join(", ")}
         </p>
       ) : null}
-      <p className={style.weight}>Weigth: {weight}</p>
+      <p className={style.weight}>Minimum weigth: {minWeight}</p>
+      <p className={style.weight}>Maximum weigth: {maxWeight}</p>
     </div>
   );
 };

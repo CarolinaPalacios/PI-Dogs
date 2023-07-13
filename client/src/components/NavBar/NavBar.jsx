@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import SearchBar from "../SearchBar/SearchBar";
 import style from "./NavBar.module.css";
 
 const NavBar = () => {
@@ -7,6 +8,7 @@ const NavBar = () => {
       <NavLink to="/home" className={style.link}>
         <button className={style.homeButton}>HOME</button>
       </NavLink>
+      <SearchBar />
       <NavLink to="/create" className={style.link}>
         <button className={style.createButton}>CREATE YOUR DOG</button>
       </NavLink>

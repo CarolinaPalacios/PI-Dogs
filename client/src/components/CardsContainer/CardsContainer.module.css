@@ -8,5 +8,39 @@
 
 .link {
   text-decoration: none;
-  margin: 10px;
+}
+
+.filterHeight {
+  border-radius: 20px;
+  margin-top: 15px;
+  color: #2e6466;
+  font-weight: bold;
+}
+
+.filterName {
+  border-radius: 20px;
+  margin: 2px;
+  color: #2e6466;
+  font-weight: bold;
+}
+
+.filterOrigin {
+  border-radius: 20px;
+  margin: 2px;
+  color: #2e6466;
+  font-weight: bold;
+}
+
+.filterTemperament {
+  border-radius: 20px;
+  margin: 2px;
+  color: #2e6466;
+  font-weight: bold;
+}
+
+.filterWeight {
+  border-radius: 20px;
+  margin: 2px;
+  color: #2e6466;
+  font-weight: bold;
 }

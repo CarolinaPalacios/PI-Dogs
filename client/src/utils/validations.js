@@ -3,40 +3,46 @@ const validations = (formData) => {
 
   if (!formData.name || !formData.name.trim()) {
     errors.name = "Breed name is required";
-  }
-
-  if (!formData.height || !formData.height.trim()) {
-    errors.height = "Height is required";
   } else {
-    const heightPattern = /^\d+\s*-\s*\d+$/;
-    if (!heightPattern.test(formData.height)) {
-      errors.height =
-        "Invalid height format. Use 'number - number' (for example, '20 - 110')";
-    } else {
-      const [minHeight, maxHeight] = formData.height.split("-");
-      const min = parseInt(minHeight.trim(), 10);
-      const max = parseInt(maxHeight.trim(), 10); //*Al especificar explícitamente la base como 10, nos aseguramos de que el valor se interprete siempre como un número decimal
-      if (min > max) {
-        errors.height = "Minimum height cannot be greater than maximum height";
-      }
+    const namePattern = /^[a-zA-Z\s]+$/;
+    if (!namePattern.test(formData.name)) {
+      errors.name = "Invalid name. Only letters and spaces are allowed";
     }
   }
 
-  if (!formData.weight || !formData.weight.trim()) {
-    errors.weight = "Weight is required";
-  } else {
-    const weightPattern = /^\d+\s*-\s*\d+$/;
-    if (!weightPattern.test(formData.weight)) {
-      errors.weight =
-        "Invalid weight format. Use 'number - number' (for example, '2 - 90')";
-    } else {
-      const [minWeight, maxWeight] = formData.weight.split("-");
-      const min = parseInt(minWeight.trim(), 10);
-      const max = parseInt(maxWeight.trim(), 10);
-      if (min > max) {
-        errors.weight = "Minimum weight cannot be greater than maximum weight";
-      }
-    }
+  if (!formData.minHeight || !formData.minHeight.trim()) {
+    errors.minHeight = "Minimum height is required";
+  }
+
+  if (!formData.maxHeight || !formData.maxHeight.trim()) {
+    errors.maxHeight = "Maximum height is required";
+  }
+
+  if (
+    formData.minHeight &&
+    formData.maxHeight &&
+    parseInt(formData.minHeight, 10) > parseInt(formData.maxHeight, 10) //*Al especificar explícitamente la base como 10, nos aseguramos de que el valor se interprete siempre como un número decimal
+  ) {
+    errors.minHeight = errors.minHeight =
+      "Minimum height cannot be greater than maximum height";
+    errors.maxHeight = "Maximum height cannot be less than minimum height";
+  }
+
+  if (!formData.minWeight || !formData.minWeight.trim()) {
+    errors.minWeight = "Minimum weight is required";
+  }
+
+  if (!formData.maxWeight || !formData.maxWeight.trim()) {
+    errors.maxWeight = "Maximum weight is required";
+  }
+
+  if (
+    formData.minWeight &&
+    formData.maxWeight &&
+    parseInt(formData.minWeight, 10) > parseInt(formData.maxWeight, 10)
+  ) {
+    errors.minWeight = "Minimum weight cannot be greater than maximum weight";
+    errors.maxWeight = "Maximum weight cannot be less than minimum weight";
   }
 
   if (!formData.age || !formData.age.trim()) {

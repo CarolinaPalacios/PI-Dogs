@@ -1,11 +1,61 @@
 .container {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  position: static;
-  background-color: #e6a9b6da;
-  padding: 10px;
+  align-items: center;
+  background-color: #e6a9b6b0;
+  padding: 15px;
+  margin-bottom: 0;
   top: 1px;
   left: 0;
   right: 0;
+}
+
+.inputSearch {
+  padding: 5px;
+  width: 200px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.buttonSearch {
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.link {
+  margin: 0 180px;
+}
+
+.createButton {
+  width: 150px;
+  height: 25px;
+  border-radius: 10px;
+  border: 0.5px solid black;
+  background-color: rgb(241, 152, 167);
+  box-shadow: 1px 5px 3px 0px rgba(0, 0, 0, 0.75);
+  transition: transform 0.3s;
+}
+
+.createButton:hover {
+  cursor: pointer;
+  box-shadow: 1px 5px 5px 0px rgba(0, 0, 0, 0.75);
+  transform: scale(1.1);
+  background-color: rgb(247, 122, 143);
+}
+
+.homeButton {
+  width: 60px;
+  height: 25px;
+  border-radius: 10px;
+  border: 0.5px solid black;
+  background-color: rgb(241, 152, 167);
+  box-shadow: 1px 5px 3px 0px rgba(0, 0, 0, 0.75);
+  transition: transform 0.3s;
+}
+
+.homeButton:hover {
+  cursor: pointer;
+  box-shadow: 1px 5px 5px 0px rgba(0, 0, 0, 0.75);
+  transform: scale(1.1);
+  background-color: rgb(247, 122, 143);
 }

@@ -10,7 +10,7 @@ import {
   FILTER_BY_NAME,
   FILTER_BY_ORIGIN,
   FILTER_BY_TEMPERAMENT,
-  FILTER_BY_WEIGHT,
+  ORDER_BY_WEIGHT,
 } from "./action-types";
 import axios from "axios";
 
@@ -148,9 +148,9 @@ export const filterByTemperament = (payload) => {
   };
 };
 
-export const filterByWeight = (payload) => {
+export const orderByWeight = (payload) => {
   return {
-    type: FILTER_BY_WEIGHT,
+    type: ORDER_BY_WEIGHT,
     payload,
   };
 };

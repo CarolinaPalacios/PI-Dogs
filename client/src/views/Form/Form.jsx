@@ -12,8 +12,10 @@ const Form = () => {
   const [formData, setFormData] = useState({
     //* Estado local para los inputs
     name: "",
-    height: "",
-    weight: "",
+    minHeight: "",
+    maxHeight: "",
+    minWeight: "",
+    maxWeight: "",
     age: "",
     temperaments: [],
     image: "",
@@ -25,6 +27,10 @@ const Form = () => {
 
   const filteredTemperaments = temperaments?.filter((temp) =>
     temp.name.includes(filterValue)
+  );
+
+  const sortedTemps = filteredTemperaments?.sort((a, b) =>
+    a.name.localeCompare(b.name)
   );
 
   useEffect(() => {
@@ -78,8 +84,10 @@ const Form = () => {
       dispatch(createDog(dogData));
       setFormData({
         name: "",
-        height: "",
-        weight: "",
+        minHeight: "",
+        maxHeight: "",
+        minWeight: "",
+        maxWeight: "",
         age: "",
         temperaments: [],
         image: "",
@@ -103,100 +111,138 @@ const Form = () => {
 
   return (
     <form onSubmit={handleSubmit} className={style.container}>
-      <h1 className={style.title}>Create your own dog breed!</h1>
-      <div className={style.label}>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Breed name"
-          className={style.input}
-        />
-        {errors.name && <p className={style.errors}>{errors.name}</p>}
-      </div>
-      <div className={style.label}>
-        <label>Height:</label>
-        <input
-          type="text"
-          name="height"
-          value={formData.height}
-          onChange={handleChange}
-          placeholder="Height min - height max"
-          className={style.input}
-        />
-        {errors.height && <p className={style.errors}>{errors.height}</p>}
-      </div>
-      <div className={style.label}>
-        <label>Weight:</label>
-        <input
-          type="text"
-          name="weight"
-          value={formData.weight}
-          onChange={handleChange}
-          placeholder="Weight min - weight max"
-          className={style.input}
-        />
-        {errors.weight && <p className={style.errors}>{errors.weight}</p>}
-      </div>
-      <div className={style.label}>
-        <label>Life Span:</label>
-        <input
-          type="text"
-          name="age"
-          value={formData.age}
-          onChange={handleChange}
-          placeholder="Min - max"
-          className={style.input}
-        />
-        {errors.age && <p className={style.errors}>{errors.age}</p>}
-      </div>
-      <div className={style.label}>
-        <label>URL Image:</label>
-        <input
-          type="text"
-          name="image"
-          value={formData.image}
-          onChange={handleChange}
-          placeholder="https://example.com"
-          className={style.input}
-        />
-
-        {errors.image && <p className={style.errors}>{errors.image}</p>}
-      </div>
-      <div className={style.label}>
-        <label htmlFor="temperament"> Temperaments:</label>
-        {errors.temperaments && (
-          <p className={style.errors}>{errors.temperaments}</p>
-        )}
-        <select
-          id="temperaments"
-          onChange={handleSelect}
-          className={style.select}
-        >
-          <option value="">Select </option>
-          {filteredTemperaments?.sort().map((temp) => (
-            <option key={temp.id} value={temp.name}>
-              {temp.name}
-            </option>
-          ))}
-        </select>
-        <div>
-          {selectedTemperaments?.sort().map((temp, index) => (
-            <div key={index}>
-              <span>{temp.name}</span>
-              <button type="button" onClick={() => handleRemove(temp)}>
-                x
-              </button>
-            </div>
-          ))}
+      <div className={style.subContainer}>
+        <h1 className={style.title}>Create your own dog breed!</h1>
+        <div className={style.label}>
+          <label>Name:</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Breed name..."
+            className={style.input}
+          />
+          {errors.name && <p className={style.errors}>{errors.name}</p>}
         </div>
-      </div>
-      <div>
-        <button type="submit" className={style.formButton}>
-          Create
-        </button>
+        <div className={style.label}>
+          <label>Minumum height:</label>
+          <input
+            type="text"
+            name="minHeight"
+            value={formData.minHeight}
+            onChange={handleChange}
+            placeholder="Minimum Height..."
+            className={style.input}
+          />
+          {errors.minHeight && (
+            <p className={style.errors}>{errors.minHeight}</p>
+          )}
+        </div>
+        <div className={style.label}>
+          <label>Maximum height:</label>
+          <input
+            type="text"
+            name="maxHeight"
+            value={formData.maxHeight}
+            onChange={handleChange}
+            placeholder="Maximum Height..."
+            className={style.input}
+          />
+          {errors.maxHeight && (
+            <p className={style.errors}>{errors.maxHeight}</p>
+          )}
+        </div>
+        <div className={style.label}>
+          <label>Minimum weight:</label>
+          <input
+            type="text"
+            name="minWeight"
+            value={formData.minWeight}
+            onChange={handleChange}
+            placeholder="Minimum Weight..."
+            className={style.input}
+          />
+          {errors.minWeight && (
+            <p className={style.errors}>{errors.minWeight}</p>
+          )}
+        </div>
+        <div className={style.label}>
+          <label>Maximum weight:</label>
+          <input
+            type="text"
+            name="maxWeight"
+            value={formData.maxWeight}
+            onChange={handleChange}
+            placeholder="Maximum Weight..."
+            className={style.input}
+          />
+          {errors.maxWeight && (
+            <p className={style.errors}>{errors.maxWeight}</p>
+          )}
+        </div>
+        <div className={style.label}>
+          <label>Life Span:</label>
+          <input
+            type="text"
+            name="age"
+            value={formData.age}
+            onChange={handleChange}
+            placeholder="Min - max"
+            className={style.input}
+          />
+          {errors.age && <p className={style.errors}>{errors.age}</p>}
+        </div>
+        <div className={style.label}>
+          <label>URL Image:</label>
+          <input
+            type="text"
+            name="image"
+            value={formData.image}
+            onChange={handleChange}
+            placeholder="https://example.com"
+            className={style.input}
+          />
+
+          {errors.image && <p className={style.errors}>{errors.image}</p>}
+        </div>
+        <div className={style.label}>
+          <label htmlFor="temperament"> Temperaments:</label>
+          {errors.temperaments && (
+            <p className={style.errors}>{errors.temperaments}</p>
+          )}
+          <select
+            id="temperaments"
+            onChange={handleSelect}
+            className={style.select}
+          >
+            <option value="">Select</option>
+            {sortedTemps?.sort().map((temp) => (
+              <option key={temp.id} value={temp.name}>
+                {temp.name}
+              </option>
+            ))}
+          </select>
+          <div>
+            {selectedTemperaments?.sort().map((temp, index) => (
+              <div key={index}>
+                <span className={style.span}>{temp.name}</span>
+                <button
+                  type="button"
+                  className={style.tempButton}
+                  onClick={() => handleRemove(temp)}
+                >
+                  x
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <button type="submit" className={style.formButton}>
+            Create
+          </button>
+        </div>
       </div>
     </form>
   );
