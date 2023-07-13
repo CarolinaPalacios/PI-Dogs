@@ -11,6 +11,7 @@ import {
   FILTER_BY_ORIGIN,
   FILTER_BY_TEMPERAMENT,
   ORDER_BY_WEIGHT,
+  RESET_STATE,
 } from "./action-types";
 
 const initialState = {
@@ -108,13 +109,13 @@ const reducer = (state = initialState, { type, payload }) => {
       };
 
     case FILTER_BY_ORIGIN:
-      const dogsOrigin = state.dogs;
-      const filteredDogByOrigin = dogsOrigin.filter((dog) =>
-        payload === "created" ? dog.createdInDB : !dog.createdInDB
-      );
+      const filteredDogsByOrigin =
+        payload === "created"
+          ? state.dogsCopy.filter((dog) => dog.createdInDB)
+          : state.dogsCopy.filter((dog) => !dog.createdInDB);
       return {
         ...state,
-        dogsCopy: filteredDogByOrigin,
+        dogs: filteredDogsByOrigin,
       };
 
     case FILTER_BY_TEMPERAMENT:
@@ -154,6 +155,10 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         dogs: sortedDogsByWeight,
         dogsCopy: sortedDogsByWeight,
+      };
+    case RESET_STATE:
+      return {
+        ...initialState,
       };
 
     default:

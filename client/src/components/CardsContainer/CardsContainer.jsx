@@ -24,6 +24,7 @@ const CardsContainer = () => {
   const totalPages = Math.ceil(allDogs.length / DOGS_PER_PAGE);
   const [currentPage, setCurrentPage] = useState(1);
   const sortedTemps = allTemps?.map((temp) => temp.name).sort();
+  const uniqueTemperaments = [...new Set(sortedTemps)]; // Eliminar duplicados
 
   useEffect(() => {
     dispatch(getTemperaments());
@@ -107,7 +108,7 @@ const CardsContainer = () => {
             Filter By Temperaments
           </option>
           <option value="All">All Temperaments</option>
-          {sortedTemps?.map((temp) => (
+          {uniqueTemperaments?.map((temp) => (
             <option key={temp} value={temp}>
               {temp}
             </option>

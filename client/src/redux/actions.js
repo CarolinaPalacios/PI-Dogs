@@ -11,6 +11,7 @@ import {
   FILTER_BY_ORIGIN,
   FILTER_BY_TEMPERAMENT,
   ORDER_BY_WEIGHT,
+  RESET_STATE,
 } from "./action-types";
 import axios from "axios";
 
@@ -152,5 +153,11 @@ export const orderByWeight = (payload) => {
   return {
     type: ORDER_BY_WEIGHT,
     payload,
+  };
+};
+
+export const resetState = () => {
+  return {
+    type: RESET_STATE,
   };
 };

@@ -224,8 +224,8 @@ const Form = () => {
             ))}
           </select>
           <div>
-            {selectedTemperaments?.sort().map((temp, index) => (
-              <div key={index}>
+            {selectedTemperaments?.sort().map((temp) => (
+              <div key={temp.id}>
                 <span className={style.span}>{temp.name}</span>
                 <button
                   type="button"

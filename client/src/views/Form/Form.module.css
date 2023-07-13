@@ -2,7 +2,7 @@
   background-image: url(https://img.freepik.com/vector-premium/herramientas-aseo-patron-costuras-cabeza-corgi-sobre-fondo-blanco_505573-121.jpg);
   background-repeat: repeat-x;
   background-size: contain;
-  padding: 22px;
+  padding: 20px;
   height: 600px;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,9 @@
 
 .subContainer {
   background-color: #ccccccbe;
-  background-position: center;
+  background-size: contain;
+  margin: 0 auto; /* Centrar horizontalmente */
+  width: 60%; /* Ajustar el ancho del contenedor */
 }
 
 .title {
@@ -22,7 +24,7 @@
   margin-bottom: 10px;
   padding: 5px;
   display: flex;
-  margin-left: 300px;
+  margin-left: 150px;
   color: #3b8183;
 }
 
@@ -30,7 +32,7 @@
   border: 1px solid #ccc;
   border-radius: 3px;
   position: absolute;
-  left: 500px;
+  right: 450px;
   width: 230px;
   padding: 5px;
 }
@@ -42,21 +44,23 @@
   padding: 5px;
   width: 242px;
   position: absolute;
-  left: 500px;
+  right: 450px;
 }
 
 .formButton {
-  background-color: #007bff;
+  background-color: #3094ff;
   color: #fff;
   border: none;
   border-radius: 10px;
   padding: 10px 20px;
   cursor: pointer;
-  margin: 10px;
+  margin: 20px;
+  transition: transform 0.3s;
 }
 
 .formButton:hover {
   background-color: #0056b3;
+  transform: scale(1.1);
 }
 
 .errors {
@@ -67,25 +71,21 @@
   max-height: 15px;
   overflow: hidden;
   color: rgb(150, 15, 15);
-  position: fixed;
-  left: 750px;
+  position: absolute;
+  left: 820px;
 }
 
 .span {
-  font-size: 11px;
+  font-size: 13px;
   padding: 0;
-  color: rgb(150, 15, 15);
+  color: #2d6163;
   position: absolute;
-  left: 780px;
+  left: 875px;
   margin-top: 5px;
 }
 
 .tempButton {
   margin: 2px;
-  font-size: 15px;
-  width: 20px;
-  height: 20px;
-  padding: 0;
   color: rgb(150, 15, 15);
   position: relative;
   left: 310px;

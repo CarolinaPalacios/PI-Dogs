@@ -27,6 +27,7 @@
 .searchButton:hover {
   cursor: pointer;
   box-shadow: 1px 5px 5px 0px rgba(0, 0, 0, 0.75);
+  background-color: rgba(255, 140, 0, 0.89);
   transform: scale(1.1);
 }
 
