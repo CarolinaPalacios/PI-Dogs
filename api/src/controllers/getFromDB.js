@@ -15,8 +15,10 @@ const getFromDb = async () => {
     return {
       id: dog.id,
       name: dog.name,
-      weight: dog.weight,
-      height: dog.height,
+      minWeight: dog.minWeight,
+      maxWeight: dog.maxWeight,
+      minHeight: dog.minHeight,
+      maxHeight: dog.maxHeight,
       age: dog.age,
       image: dog.image,
       createdInDB: dog.createdInDB,

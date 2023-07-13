@@ -3,15 +3,26 @@ const getAllTemperaments = require("./getAllTemperaments");
 
 const createDog = async (req, res) => {
   try {
-    const { name, height, weight, age, image, temperaments, createdInDB } =
-      req.body;
+    const {
+      name,
+      minHeight,
+      maxHeight,
+      minWeight,
+      maxWeight,
+      age,
+      image,
+      temperaments,
+      createdInDB,
+    } = req.body;
 
     const newDog = await Dog.create({
       name,
       age,
       image,
-      height,
-      weight,
+      minHeight,
+      maxHeight,
+      minWeight,
+      maxWeight,
       createdInDB: createdInDB,
     });
 

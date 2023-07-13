@@ -3,6 +3,7 @@ const getAllDogs = require("./getAllDogs");
 const getDogsByName = async (req, res) => {
   const { name } = req.query;
   const dogs = await getAllDogs();
+  console.log(dogs);
   try {
     if (name) {
       const dogFound = dogs.filter((dog) =>

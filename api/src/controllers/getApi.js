@@ -13,8 +13,10 @@ const getApi = async () => {
           name,
           age: life_span,
           image: image.url,
-          height: height.metric,
-          weight: weight.metric,
+          minHeight: parseInt(height.metric.split("-")[0]),
+          maxHeight: parseInt(height.metric.split("-")[1]),
+          minWeight: parseInt(weight.metric.split("-")[0]),
+          maxWeight: parseInt(weight.metric.split("-")[1]),
           temperament: temperament
             ? temperament.split(",").map((temp) => temp.trim())
             : [], // Si la propiedad temperament existe, se divide por comas y se eliminan los espacios vacíos alrededor de cada temperamento. De lo contrario, se asigna un arreglo vacío.

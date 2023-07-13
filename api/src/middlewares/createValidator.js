@@ -1,10 +1,21 @@
 const { Dog } = require("../db");
 const { Op } = require("sequelize");
 const createValidator = async (req, res, next) => {
-  const { name, height, weight, age, image, temperaments } = req.body;
+  const {
+    name,
+    minHeight,
+    maxHeight,
+    minWeight,
+    maxWeight,
+    age,
+    image,
+    temperaments,
+  } = req.body;
   if (!name) return res.status(400).json({ error: "Missing name" });
-  if (!height) return res.status(400).json({ error: "Missing height" });
-  if (!weight) return res.status(400).json({ error: "Missing weigth" });
+  if (!minHeight) return res.status(400).json({ error: "Missing minHeight" });
+  if (!maxHeight) return res.status(400).json({ error: "Missing maxHeight" });
+  if (!minWeight) return res.status(400).json({ error: "Missing minWeigth" });
+  if (!maxWeight) return res.status(400).json({ error: "Missing maxWeigth" });
   if (!age) return res.status(400).json({ error: "Missing age" });
   if (!image) return res.status(400).json({ error: "Missing image" });
   if (!temperaments)
