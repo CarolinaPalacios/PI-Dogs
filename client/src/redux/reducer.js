@@ -6,8 +6,8 @@ import {
   GET_DOG_BY_ID,
   GET_DOG_BY_NAME,
   GET_TEMPERAMENTS,
-  FILTER_BY_HEIGHT,
-  FILTER_BY_NAME,
+  ORDER_BY_HEIGHT,
+  ORDER_BY_NAME,
   FILTER_BY_ORIGIN,
   FILTER_BY_TEMPERAMENT,
   ORDER_BY_WEIGHT,
@@ -19,6 +19,13 @@ const initialState = {
   dogsCopy: [],
   temperaments: [],
   detail: [],
+  filters: {
+    height: null,
+    name: null,
+    origin: null,
+    temperament: null,
+    weight: null,
+  },
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -68,8 +75,8 @@ const reducer = (state = initialState, { type, payload }) => {
         detail: [],
       };
 
-    case FILTER_BY_HEIGHT:
-      const sortedByHeight = [...state.dogsCopy];
+    case ORDER_BY_HEIGHT:
+      const sortedByHeight = [...state.dogs];
       const heightAscendingOrder = payload === "minH";
 
       sortedByHeight.sort((first, second) => {
@@ -89,12 +96,14 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         dogs: sortedByHeight,
-        dogsCopy: sortedByHeight,
+        filters: {
+          ...state.filters,
+          height: payload,
+        },
       };
 
-    case FILTER_BY_NAME:
+    case ORDER_BY_NAME:
       const sortedByName = [...state.dogs].sort((dogA, dogB) => {
-        console.log("Reducer: FILTER_BY_WEIGHT, payload:", payload);
         return (
           dogA.name.localeCompare(dogB.name, "en", {
             //compara los nombres de los perros. 'en' para especificar que se debe utilizar el idioma inglés y { sensitivity: 'base' } indica que la comparación debe ser sensible a las diferencias de mayúsculas y minúsculas.
@@ -105,7 +114,10 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         dogs: sortedByName,
-        dogsCopy: sortedByName,
+        filters: {
+          ...state.filters,
+          name: payload,
+        },
       };
 
     case FILTER_BY_ORIGIN:
@@ -133,17 +145,21 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         dogs: filteredDogs, // Actualiza 'dogs' en lugar de 'dogsCopy'
+        filters: {
+          ...state.filters,
+          temperament: payload,
+        },
       };
 
     case ORDER_BY_WEIGHT:
       let sortedDogsByWeight;
 
       if (payload === "min") {
-        sortedDogsByWeight = [...state.dogsCopy].sort(
+        sortedDogsByWeight = [...state.dogs].sort(
           (a, b) => parseInt(a.minWeight) - parseInt(b.minWeight)
         );
       } else if (payload === "max") {
-        sortedDogsByWeight = [...state.dogsCopy].sort(
+        sortedDogsByWeight = [...state.dogs].sort(
           (a, b) => parseInt(b.minWeight) - parseInt(a.minWeight)
         );
       } else {
@@ -154,8 +170,12 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         dogs: sortedDogsByWeight,
-        dogsCopy: sortedDogsByWeight,
+        filters: {
+          ...state.filters,
+          weight: payload,
+        },
       };
+
     case RESET_STATE:
       return {
         ...initialState,

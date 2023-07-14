@@ -22,11 +22,11 @@ const Form = () => {
   });
 
   const [selectedTemperaments, setSelectedTemperaments] = useState([]);
+  const [filterValue] = useState(""); //este estado es un valor constante y no cambia durante la ejecución del componente. En este caso, se utiliza como un valor estático para filtrar los temperamentos disponibles.
   const [errors, setErrors] = useState({});
-  const [filterValue] = useState("");
 
-  const filteredTemperaments = temperaments?.filter((temp) =>
-    temp.name.includes(filterValue)
+  const filteredTemperaments = temperaments?.filter(
+    (temp) => temp.name.includes(filterValue) //como filterValue es un string vacío, todos los elementos de temperaments se incluirán en el nuevo array sin ningún cambio
   );
 
   const sortedTemps = filteredTemperaments?.sort((a, b) =>

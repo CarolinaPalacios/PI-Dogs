@@ -68,10 +68,14 @@ const validations = (formData) => {
     errors.image = "Image URL cannot exceed 200 characters";
   } else {
     const urlPattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
-    if (!urlPattern.test(formData.image)) {
-      errors.image = "Invalid Image URL";
-    }
+    const imagePattern = /\.(jpeg|jpg|gif|png|svg)$/i;
+    if (!urlPattern.test(formData.image)) errors.image = "Invalid Image URL";
+    else if (!imagePattern.test(formData.image))
+      errors.image = "Must be an image URL";
   }
+
+  if (formData.temperaments.length === 0)
+    errors.temperaments = "Temperaments are required";
 
   return errors;
 };

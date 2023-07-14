@@ -1,10 +1,10 @@
 import Card from "../Card/Card";
 import { NavLink, useLocation } from "react-router-dom";
 import {
-  filterByHeight,
+  orderByHeight,
   filterByOrigin,
   filterByTemperament,
-  filterByName,
+  orderByName,
   getTemperaments,
   orderByWeight,
 } from "../../redux/actions";
@@ -42,12 +42,12 @@ const CardsContainer = () => {
   const firstIndex = lastIndex - DOGS_PER_PAGE;
   const currentDogs = filteredDogs.slice(firstIndex, lastIndex);
 
-  const handleFilterByHeight = (event) => {
-    dispatch(filterByHeight(event.target.value));
+  const handleOrderByHeight = (event) => {
+    dispatch(orderByHeight(event.target.value));
   };
 
-  const handleFilterByName = (event) => {
-    dispatch(filterByName(event.target.value));
+  const handleOrderByName = (event) => {
+    dispatch(orderByName(event.target.value));
   };
 
   const handleFilterByOrigin = (event) => {
@@ -67,7 +67,7 @@ const CardsContainer = () => {
     <div>
       <div className={style.filters}>
         <select
-          onChange={handleFilterByHeight}
+          onChange={handleOrderByHeight}
           className={style.filterHeight}
           value=""
         >
@@ -78,7 +78,7 @@ const CardsContainer = () => {
           <option value="maxH">Maximum</option>
         </select>
         <select
-          onChange={handleFilterByName}
+          onChange={handleOrderByName}
           className={style.filterName}
           value=""
         >

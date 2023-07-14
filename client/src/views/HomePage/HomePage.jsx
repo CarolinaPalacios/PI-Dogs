@@ -1,7 +1,7 @@
 import CardsContainer from "../../components/CardsContainer/CardsContainer";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getDogs } from "../../redux/actions";
+import { getDogs, getTemperaments } from "../../redux/actions";
 import style from "./HomePage.module.css";
 
 const HomePage = () => {
@@ -9,6 +9,7 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(getDogs());
+    dispatch(getTemperaments());
   }, [dispatch]);
 
   return (

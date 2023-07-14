@@ -6,8 +6,8 @@ import {
   GET_DOG_BY_ID,
   GET_DOG_BY_NAME,
   GET_TEMPERAMENTS,
-  FILTER_BY_HEIGHT,
-  FILTER_BY_NAME,
+  ORDER_BY_HEIGHT,
+  ORDER_BY_NAME,
   FILTER_BY_ORIGIN,
   FILTER_BY_TEMPERAMENT,
   ORDER_BY_WEIGHT,
@@ -42,7 +42,7 @@ export const getDogById = (id) => {
         payload: data,
       });
     } catch (error) {
-      console.log(error.message);
+      alert(error.response.data);
     }
   };
 };
@@ -59,7 +59,7 @@ export const getDogByName = (name) => {
         payload: data,
       });
     } catch (error) {
-      console.log(error.message);
+      alert(error.response.data);
     }
   };
 };
@@ -121,16 +121,17 @@ export const deleteDogId = () => {
   };
 };
 
-export const filterByHeight = (payload) => {
+export const orderByHeight = (payload) => {
   return {
-    type: FILTER_BY_HEIGHT,
+    type: ORDER_BY_HEIGHT,
+
     payload,
   };
 };
 
-export const filterByName = (payload) => {
+export const orderByName = (payload) => {
   return {
-    type: FILTER_BY_NAME,
+    type: ORDER_BY_NAME,
     payload,
   };
 };
