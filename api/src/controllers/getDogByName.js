@@ -3,7 +3,6 @@ const getAllDogs = require("./getAllDogs");
 const getDogsByName = async (req, res) => {
   const { name } = req.query;
   const dogs = await getAllDogs();
-  console.log(dogs);
   try {
     if (name) {
       const dogFound = dogs.filter((dog) =>
@@ -11,11 +10,11 @@ const getDogsByName = async (req, res) => {
       ); //* Filtramos lo que nos llega por query y lo parseamos a minúscula para que coicidan con los datos que de el cliente
       return dogFound.length
         ? res.status(200).json(dogFound)
-        : res.status(404).json({ msg: "Dog not found" });
+        : res.status(404).send("Dog not found with the provided name");
     }
     return res.status(200).json(dogs);
   } catch (error) {
-    return res.status(404).send(error.message);
+    return res.status(500).send(error.message);
   }
 };
 
