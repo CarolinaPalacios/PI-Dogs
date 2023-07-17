@@ -12,6 +12,7 @@ import {
   FILTER_BY_TEMPERAMENT,
   ORDER_BY_WEIGHT,
   RESET_STATE,
+  SHOW_ALERT,
 } from "./action-types";
 import axios from "axios";
 
@@ -88,10 +89,10 @@ export const createDog = (newDog) => {
         type: CREATE_DOG,
         payload: data,
       });
-      alert("Dog created successfully");
+      dispatch(showAlert("Dog created successfully", "success"));
       return data;
     } catch (error) {
-      console.log(error.message);
+      dispatch(showAlert(error.response.data.error, "failure"));
     }
   };
 };
@@ -167,3 +168,8 @@ export const resetState = () => {
     type: RESET_STATE,
   };
 };
+
+export const showAlert = (message, type) => ({
+  type: SHOW_ALERT,
+  payload: { message, type },
+});

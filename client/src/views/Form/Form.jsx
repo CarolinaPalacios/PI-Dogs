@@ -9,6 +9,8 @@ const Form = () => {
 
   const temperaments = useSelector((state) => state.temperaments);
 
+  const alert = useSelector((state) => state.alert);
+
   const [formData, setFormData] = useState({
     //* Estado local para los inputs
     name: "",
@@ -92,6 +94,7 @@ const Form = () => {
         temperaments: [],
         image: "",
       });
+      setSelectedTemperaments([]);
     } else {
       setErrors(validationErrors);
     }
@@ -117,11 +120,23 @@ const Form = () => {
     formData.maxWeight &&
     formData.age &&
     formData.image &&
-    selectedTemperaments.length > 0; // Verificar si todos los campos del formulario están completos
+    selectedTemperaments.length > 0;
+  // Verificar si todos los campos del formulario están completos
 
   return (
     <form onSubmit={handleSubmit} className={style.container}>
       <div className={style.subContainer}>
+        {alert.message && (
+          <div
+            className={`${style.alert} ${
+              alert.type === "success"
+                ? style.alertMessage
+                : style.alertMessageFailure
+            }`}
+          >
+            {alert.message}
+          </div>
+        )}
         <h1 className={style.title}>Create your own dog breed!</h1>
         <div className={style.label}>
           <label>Name:</label>

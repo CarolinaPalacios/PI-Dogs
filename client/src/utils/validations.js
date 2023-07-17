@@ -12,10 +12,14 @@ const validations = (formData) => {
 
   if (!formData.minHeight || !formData.minHeight.trim()) {
     errors.minHeight = "Minimum height is required";
+  } else if (typeof parseInt(formData.minHeight) !== "number") {
+    errors.minHeight = "Invalid height, only numbers allowed";
   }
 
   if (!formData.maxHeight || !formData.maxHeight.trim()) {
     errors.maxHeight = "Maximum height is required";
+  } else if (typeof parseInt(formData.maxHeight) !== "number") {
+    errors.maxHeight = "Invalid height, only numbers allowed";
   }
 
   if (
@@ -30,10 +34,14 @@ const validations = (formData) => {
 
   if (!formData.minWeight || !formData.minWeight.trim()) {
     errors.minWeight = "Minimum weight is required";
+  } else if (typeof parseInt(formData.minWeight) !== "number") {
+    errors.minWeight = "Invalid weight, only numbers allowed";
   }
 
   if (!formData.maxWeight || !formData.maxWeight.trim()) {
     errors.maxWeight = "Maximum weight is required";
+  } else if (typeof parseInt(formData.maxWeight) !== "number") {
+    errors.maxWeight = "Invalid weight, only numbers allowed";
   }
 
   if (

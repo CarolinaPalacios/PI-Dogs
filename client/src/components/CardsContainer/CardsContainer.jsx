@@ -8,7 +8,7 @@ import {
   orderByWeight,
 } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Pagination from "../Pagination/Pagination";
 import style from "./CardsContainer.module.css";
 
@@ -36,6 +36,10 @@ const CardsContainer = () => {
   const lastIndex = currentPage * DOGS_PER_PAGE;
   const firstIndex = lastIndex - DOGS_PER_PAGE;
   const currentDogs = filteredDogs.slice(firstIndex, lastIndex);
+
+  useEffect(() => {
+    setCurrentPage(1); // Reset currentPage a 1 cuando busque por nombre
+  }, [searchedDogName, setCurrentPage]);
 
   const handleOrderByHeight = (event) => {
     dispatch(orderByHeight(event.target.value));

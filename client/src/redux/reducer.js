@@ -12,6 +12,7 @@ import {
   FILTER_BY_TEMPERAMENT,
   ORDER_BY_WEIGHT,
   RESET_STATE,
+  SHOW_ALERT,
 } from "./action-types";
 
 const initialState = {
@@ -25,6 +26,10 @@ const initialState = {
     origin: null,
     temperament: null,
     weight: null,
+  },
+  alert: {
+    message: "",
+    type: null,
   },
 };
 
@@ -183,6 +188,15 @@ const reducer = (state = initialState, { type, payload }) => {
     case RESET_STATE:
       return {
         ...initialState,
+      };
+
+    case SHOW_ALERT:
+      return {
+        ...state,
+        alert: {
+          message: payload.message,
+          type: payload.type,
+        },
       };
 
     default:

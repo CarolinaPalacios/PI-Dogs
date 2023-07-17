@@ -1,6 +1,7 @@
 import { deleteDogId, getDogById, deleteDog } from "../../redux/actions";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import Loading from "../../components/Loading/Loading";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import style from "./Detail.module.css";
 
@@ -8,9 +9,12 @@ const Detail = () => {
   const dispatch = useDispatch();
   const dog = useSelector((state) => state.detail);
   const { id } = useParams();
+  const [isLoadingDetail, setIsLoadingDetail] = useState(true);
 
   useEffect(() => {
-    dispatch(getDogById(id));
+    dispatch(getDogById(id))
+      .then(() => setIsLoadingDetail(false))
+      .catch((error) => console.log(error));
     return () => {
       dispatch(deleteDogId());
     };
@@ -24,6 +28,10 @@ const Detail = () => {
       dispatch(deleteDogId());
     }
   };
+
+  if (isLoadingDetail) {
+    return <Loading />;
+  }
 
   return (
     <div className={style.container}>
