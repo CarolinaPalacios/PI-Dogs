@@ -8,21 +8,33 @@ import style from "./HomePage.module.css";
 const HomePage = () => {
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
-  const [isLoading, setisLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (
+    const shouldLoadData =
       filters.height === null &&
       filters.weight === null &&
       filters.origin === null &&
       filters.temperament === null &&
-      filters.name === null
-    ) {
-      dispatch(getDogs());
-      dispatch(getTemperaments())
-        .then(() => setisLoading(false))
-        .catch((error) => console.log(error));
-    }
+      filters.name === null;
+
+    const loadData = async () => {
+      try {
+        setIsLoading(true);
+
+        if (shouldLoadData) {
+          await dispatch(getDogs());
+          await dispatch(getTemperaments());
+        }
+
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        console.log(error);
+      }
+    };
+
+    loadData();
   }, [dispatch, filters]);
 
   if (isLoading) {
