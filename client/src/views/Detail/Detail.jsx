@@ -9,21 +9,21 @@ const Detail = () => {
   const dog = useSelector((state) => state.detail);
   const { id } = useParams();
 
-  const handleDelete = async (id) => {
-    try {
-      await dispatch(deleteDog(id));
-      dispatch(deleteDogId());
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
   useEffect(() => {
     dispatch(getDogById(id));
     return () => {
       dispatch(deleteDogId());
     };
   }, [dispatch, id]);
+
+  const handleDelete = async (id) => {
+    const response = await dispatch(deleteDog(id));
+    if (response && response.error) {
+      alert(response.error);
+    } else {
+      dispatch(deleteDogId());
+    }
+  };
 
   return (
     <div className={style.container}>

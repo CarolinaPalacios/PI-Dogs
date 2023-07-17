@@ -81,7 +81,6 @@ export const getTemperaments = () => {
 
 export const createDog = (newDog) => {
   const endpoint = "http://localhost:3001/dogs";
-  console.log(newDog);
   return async (dispatch) => {
     try {
       const { data } = await axios.post(endpoint, newDog);
@@ -98,18 +97,24 @@ export const createDog = (newDog) => {
 };
 
 export const deleteDog = (id) => {
-  const endpoint = `http://localhost:3001/dogs/delete/${id}`;
+  const endpoint = `http://localhost:3001/dogs/${id}`;
   return async (dispatch) => {
     try {
-      if (!id) throw new Error(`Invalid id: ${id}`);
-      const { data } = await axios.delete(endpoint);
-      dispatch({
-        type: DELETE_DOG,
-        payload: data,
-      });
-      return data;
+      if (typeof id === "string") {
+        // Caso para id tipo UUID (eliminar de la base de datos)
+        const { data } = await axios.delete(endpoint);
+        dispatch({
+          type: DELETE_DOG,
+          payload: data,
+        });
+        alert(data.message);
+        return data;
+      } else {
+        // Caso para id tipo integer (mostrar mensaje de error)
+        return { error: "ApiDogs cannot be removed" }; // Devuelve objeto de error
+      }
     } catch (error) {
-      console.log(error.message);
+      alert(error.response?.data || error.message);
     }
   };
 };

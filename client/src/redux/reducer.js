@@ -128,6 +128,10 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         dogs: filteredDogsByOrigin,
+        filters: {
+          ...state.filters,
+          origin: payload,
+        },
       };
 
     case FILTER_BY_TEMPERAMENT:

@@ -5,11 +5,10 @@ import {
   filterByOrigin,
   filterByTemperament,
   orderByName,
-  getTemperaments,
   orderByWeight,
 } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Pagination from "../Pagination/Pagination";
 import style from "./CardsContainer.module.css";
 
@@ -25,10 +24,6 @@ const CardsContainer = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const sortedTemps = allTemps?.map((temp) => temp.name).sort();
   const uniqueTemperaments = [...new Set(sortedTemps)]; // Eliminar duplicados
-
-  useEffect(() => {
-    dispatch(getTemperaments());
-  }, [dispatch]);
 
   const filteredDogs = allDogs.filter((dog) =>
     dog.name.toLowerCase().includes(searchedDogName.toLowerCase())
@@ -56,6 +51,7 @@ const CardsContainer = () => {
   };
 
   const handleFilterByTemperament = (event) => {
+    setCurrentPage(1);
     dispatch(filterByTemperament(event.target.value));
   };
 
@@ -96,7 +92,7 @@ const CardsContainer = () => {
           <option disabled value="">
             Filter Your Dogs
           </option>
-          <option value="All">All</option>
+          <option value="All">Api Dogs</option>
           <option value="created">Your Dogs</option>
         </select>
         <select

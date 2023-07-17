@@ -1,6 +1,6 @@
 .container {
-  background-image: url(../../assets/dogs.jpg);
-  position: absolute;
+  background-image: url(../../assets/img.png);
+  position: relative;
   text-align: center;
   display: flex;
 }
@@ -39,7 +39,7 @@
 }
 
 .deleteButton {
-  margin: 30px 0px 0 10px;
+  margin: 30px 10px 0px 0px;
   height: 45px;
   width: 65px;
   background-color: rgb(146, 51, 51);

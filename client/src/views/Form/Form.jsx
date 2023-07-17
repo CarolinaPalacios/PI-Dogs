@@ -109,6 +109,16 @@ const Form = () => {
     );
   };
 
+  const isFormComplete =
+    formData.name &&
+    formData.minHeight &&
+    formData.maxHeight &&
+    formData.minWeight &&
+    formData.maxWeight &&
+    formData.age &&
+    formData.image &&
+    selectedTemperaments.length > 0; // Verificar si todos los campos del formulario están completos
+
   return (
     <form onSubmit={handleSubmit} className={style.container}>
       <div className={style.subContainer}>
@@ -208,9 +218,6 @@ const Form = () => {
         </div>
         <div className={style.label}>
           <label htmlFor="temperament"> Temperaments:</label>
-          {errors.temperaments && (
-            <p className={style.errors}>{errors.temperaments}</p>
-          )}
           <select
             id="temperaments"
             onChange={handleSelect}
@@ -238,11 +245,13 @@ const Form = () => {
             ))}
           </div>
         </div>
-        <div>
-          <button type="submit" className={style.formButton}>
-            Create
-          </button>
-        </div>
+        {isFormComplete && (
+          <div>
+            <button type="submit" className={style.formButton}>
+              Create
+            </button>
+          </div>
+        )}
       </div>
     </form>
   );

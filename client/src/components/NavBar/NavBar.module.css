@@ -1,6 +1,8 @@
 .container {
   display: flex;
   align-items: center;
+  /*background-image: url(https://t3.ftcdn.net/jpg/03/12/91/10/360_F_312911040_8dZuCF1phqBH3RCc4Qn8AOoeHjgHUiJT.jpg);
+  background-size: contain; */
   background-color: #e6a9b6b0;
   padding: 15px;
   margin-bottom: 0;
@@ -23,7 +25,7 @@
 }
 
 .link {
-  margin: 0 180px;
+  margin: 0 100px;
 }
 
 .createButton {
@@ -58,4 +60,37 @@
   box-shadow: 1px 5px 5px 0px rgba(0, 0, 0, 0.75);
   transform: scale(1.1);
   background-color: rgb(247, 122, 143);
+}
+
+@font-face {
+  font-family: "Lilita One";
+  src: url(../../assets/LilitaOne-Regular.ttf);
+}
+
+.title {
+  height: 10px;
+  margin: -25px 10px 5px;
+  font-family: "Lilita One";
+  font-size: 40px;
+  color: rgb(247, 122, 143);
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
+  text-shadow: 3px 3px 5px black;
+}
+
+.linkTitle {
+  text-decoration: none;
+  position: relative;
+}
+
+.linkTitle:hover::after {
+  content: "Click to reset filters!";
+  position: absolute;
+  top: 15px;
+  left: 40%;
+  transform: translateX(40%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
 }

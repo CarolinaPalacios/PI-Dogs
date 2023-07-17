@@ -15,10 +15,11 @@ const NavBar = () => {
 
   return (
     <div className={style.container}>
+      <NavLink to="/home" className={style.linkTitle} onClick={handleHomeClick}>
+        <h1 className={style.title}>DOG APP!</h1>
+      </NavLink>
       <NavLink to="/home" className={style.link}>
-        <button className={style.homeButton} onClick={handleHomeClick}>
-          HOME
-        </button>
+        <button className={style.homeButton}>HOME</button>
       </NavLink>
       <SearchBar />
       <NavLink to="/create" className={style.link}>

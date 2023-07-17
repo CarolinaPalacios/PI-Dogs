@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   box-shadow: 1px 5px 3px 0px rgba(0, 0, 0, 0.75);
-  background-color: rgba(255, 175, 77, 0.89);
+  background-color: rgb(255, 175, 77);
   transition: transform 0.3s;
 }
 

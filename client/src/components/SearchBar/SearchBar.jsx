@@ -27,7 +27,7 @@ const SearchBar = () => {
     <div className={style.searchBar}>
       <input
         type="search"
-        placeholder="Search by breed name"
+        placeholder="Search by breed name..."
         value={dogName}
         onChange={handleChange}
         className={style.inputSearchBar}
