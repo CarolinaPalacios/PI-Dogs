@@ -53,7 +53,6 @@ export const getDogByName = (name) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.get(endpoint);
-      if (!data.length) throw Error("Dog not found");
 
       return dispatch({
         type: GET_DOG_BY_NAME,

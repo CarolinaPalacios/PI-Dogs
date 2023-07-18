@@ -171,11 +171,7 @@ const reducer = (state = initialState, { type, payload }) => {
         sortedDogsByWeight = [...state.dogs].sort(
           (a, b) => parseInt(b.minWeight) - parseInt(a.minWeight)
         );
-      } else {
-        // Manejar caso de payload no válido, si es necesario
-        sortedDogsByWeight = state.dogsCopy; // Mantener el orden actual
       }
-
       return {
         ...state,
         dogs: sortedDogsByWeight,

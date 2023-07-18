@@ -18,7 +18,7 @@ const Card = ({
       <h3 className={style.name}>Name: {name}</h3>
       {createdInDB && Array.isArray(temperament) && temperament.length ? (
         <p className={style.temperaments}>
-          Temperament: {temperament.join(", ")}
+          Temperaments: {temperament.join(", ")}
         </p>
       ) : Array.isArray(temperament) && temperament.length ? (
         <p className={style.temperaments}>

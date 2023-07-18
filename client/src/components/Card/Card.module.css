@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   width: 210px;
-  height: 400px;
+  height: 410px;
   border-radius: 10px;
   box-shadow: 10px 10px 10px rgb(29, 28, 28);
   padding: 25px;
@@ -35,15 +35,15 @@
   font-family: "Montserrat";
   font-weight: 800;
   color: #3b8183;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }
 .temperaments {
   font-family: "Montserrat";
-  margin-bottom: 5px;
+  margin-top: 10px;
   color: #3b8183;
 }
 .weight {
   font-family: "Montserrat";
-  margin-bottom: 1px;
+  margin-bottom: 2px;
   color: #3b8183;
 }

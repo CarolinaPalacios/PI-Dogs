@@ -38,7 +38,12 @@ const CardsContainer = () => {
   const currentDogs = filteredDogs.slice(firstIndex, lastIndex);
 
   useEffect(() => {
-    setCurrentPage(1); // Reset currentPage a 1 cuando busque por nombre
+    const storedPage = localStorage.getItem("currentPage"); //almacenar el valor de la página actual en el almacenamiento local del navegador
+    if (storedPage) {
+      setCurrentPage(parseInt(storedPage));
+    } else {
+      setCurrentPage(1); // Reset currentPage a 1 cuando busque por nombre
+    }
   }, [searchedDogName, setCurrentPage]);
 
   const handleOrderByHeight = (event) => {
@@ -89,12 +94,23 @@ const CardsContainer = () => {
           <option value="Desc">Descending</option>
         </select>
         <select
+          onChange={(event) => handleOrderByWeight(event.target.value)}
+          className={style.filterWeight}
+          value=""
+        >
+          <option disabled value="">
+            Order By Weight
+          </option>
+          <option value="min">Minimum</option>
+          <option value="max">Maximum</option>
+        </select>
+        <select
           onChange={handleFilterByOrigin}
           className={style.filterOrigin}
           value=""
         >
           <option disabled value="">
-            Filter Your Dogs
+            Filter By Source
           </option>
           <option value="All">Api Dogs</option>
           <option value="created">Your Dogs</option>
@@ -114,17 +130,6 @@ const CardsContainer = () => {
             </option>
           ))}
         </select>
-        <select
-          onChange={(event) => handleOrderByWeight(event.target.value)}
-          className={style.filterWeight}
-          value=""
-        >
-          <option disabled value="">
-            Order By Weight
-          </option>
-          <option value="min">Minimum</option>
-          <option value="max">Maximum</option>
-        </select>
       </div>
       <div className={style.cardContainer}>
         {currentDogs.map(
@@ -140,7 +145,7 @@ const CardsContainer = () => {
             temperament,
             createdInDB,
           }) => (
-            <NavLink to={`/dogs/${id}`} className={style.link} key={id}>
+            <NavLink to={`/detail/${id}`} className={style.link} key={id}>
               <Card
                 id={id}
                 name={name}

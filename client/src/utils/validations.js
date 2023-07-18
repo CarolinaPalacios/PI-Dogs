@@ -14,12 +14,20 @@ const validations = (formData) => {
     errors.minHeight = "Minimum height is required";
   } else if (typeof parseInt(formData.minHeight) !== "number") {
     errors.minHeight = "Invalid height, only numbers allowed";
+  } else {
+    const heightPattern = /^([9]|[1-9][0-9]|110)$/;
+    if (!heightPattern.test(formData.minHeight))
+      errors.minHeight = "Invalid height, must be between 9cm and 110cm";
   }
 
   if (!formData.maxHeight || !formData.maxHeight.trim()) {
     errors.maxHeight = "Maximum height is required";
   } else if (typeof parseInt(formData.maxHeight) !== "number") {
     errors.maxHeight = "Invalid height, only numbers allowed";
+  } else {
+    const heightPattern = /^([9]|[1-9][0-9]|110)$/;
+    if (!heightPattern.test(formData.maxHeight))
+      errors.maxHeight = "Invalid height, must be between 9cm and 110cm";
   }
 
   if (
@@ -36,12 +44,20 @@ const validations = (formData) => {
     errors.minWeight = "Minimum weight is required";
   } else if (typeof parseInt(formData.minWeight) !== "number") {
     errors.minWeight = "Invalid weight, only numbers allowed";
+  } else {
+    const weightPattern = /^(?:[1-9]|[1-8]\d|90)$/;
+    if (!weightPattern.test(formData.minWeight))
+      errors.minWeight = "Invalid weight, must be between 1kg and 90kg";
   }
 
   if (!formData.maxWeight || !formData.maxWeight.trim()) {
     errors.maxWeight = "Maximum weight is required";
   } else if (typeof parseInt(formData.maxWeight) !== "number") {
     errors.maxWeight = "Invalid weight, only numbers allowed";
+  } else {
+    const weightPattern = /^(?:[1-9]|[1-8]\d|90)$/;
+    if (!weightPattern.test(formData.maxWeight))
+      errors.maxWeight = "Invalid weight, must be between 1kg and 90kg";
   }
 
   if (

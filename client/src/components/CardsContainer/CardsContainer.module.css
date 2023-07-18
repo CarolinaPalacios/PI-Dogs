@@ -16,6 +16,7 @@
   color: #2e6466;
   font-weight: bold;
   cursor: pointer;
+  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.75);
 }
 
 .filterName {
@@ -24,6 +25,7 @@
   color: #2e6466;
   font-weight: bold;
   cursor: pointer;
+  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.75);
 }
 
 .filterOrigin {
@@ -32,6 +34,7 @@
   color: #2e6466;
   font-weight: bold;
   cursor: pointer;
+  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.75);
 }
 
 .filterTemperament {
@@ -40,6 +43,7 @@
   color: #2e6466;
   font-weight: bold;
   cursor: pointer;
+  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.75);
 }
 
 .filterWeight {
@@ -48,4 +52,5 @@
   color: #2e6466;
   font-weight: bold;
   cursor: pointer;
+  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.75);
 }

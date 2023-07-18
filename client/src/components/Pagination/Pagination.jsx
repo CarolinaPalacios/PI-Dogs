@@ -4,6 +4,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
       onPageChange(page);
+      localStorage.setItem("currentPage", page.toString());
     }
   };
 

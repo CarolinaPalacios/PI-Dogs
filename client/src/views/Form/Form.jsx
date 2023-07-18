@@ -69,6 +69,7 @@ const Form = () => {
       ]);
     }
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const validationErrors = validations(formData);
