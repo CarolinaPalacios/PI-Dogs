@@ -1,15 +1,17 @@
 import Card from "../Card/Card";
 import { NavLink, useLocation } from "react-router-dom";
 import {
-  orderByHeight,
+  // orderByHeight,
   filterByOrigin,
   filterByTemperament,
   orderByName,
   orderByWeight,
+  resetState,
 } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import Pagination from "../Pagination/Pagination";
+import logo from "../../assets/reset.svg";
 import style from "./CardsContainer.module.css";
 
 const CardsContainer = () => {
@@ -39,16 +41,17 @@ const CardsContainer = () => {
 
   useEffect(() => {
     const storedPage = localStorage.getItem("currentPage"); //almacenar el valor de la página actual en el almacenamiento local del navegador
-    if (storedPage) {
+    if (storedPage && searchedDogName === "") {
+      // Restaurar la página actual solo si no se está realizando una búsqueda por nombre
       setCurrentPage(parseInt(storedPage));
     } else {
       setCurrentPage(1); // Reset currentPage a 1 cuando busque por nombre
     }
   }, [searchedDogName, setCurrentPage]);
 
-  const handleOrderByHeight = (event) => {
-    dispatch(orderByHeight(event.target.value));
-  };
+  // const handleOrderByHeight = (event) => {
+  //   dispatch(orderByHeight(event.target.value));
+  // };
 
   const handleOrderByName = (event) => {
     dispatch(orderByName(event.target.value));
@@ -68,20 +71,24 @@ const CardsContainer = () => {
     dispatch(orderByWeight(value));
   };
 
+  const handleReset = () => {
+    dispatch(resetState());
+  };
+
   return (
     <div>
       <div className={style.filters}>
-        <select
-          onChange={handleOrderByHeight}
-          className={style.filterHeight}
-          value=""
-        >
-          <option disabled value="">
-            Order By Height
-          </option>
-          <option value="minH">Minimum</option>
-          <option value="maxH">Maximum</option>
-        </select>
+        {/* <select
+            onChange={handleOrderByHeight}
+            className={style.filterHeight}
+            value=""
+          >
+            <option disabled value="">
+              Order By Height
+            </option>
+            <option value="minH">Minimum</option>
+            <option value="maxH">Maximum</option>
+          </select> */}
         <select
           onChange={handleOrderByName}
           className={style.filterName}
@@ -130,6 +137,11 @@ const CardsContainer = () => {
             </option>
           ))}
         </select>
+        <div className={style.resetContainer}>
+          <button className={style.reset} onClick={handleReset}>
+            <img src={logo} alt="reset" className={style.logoreset} />
+          </button>
+        </div>
       </div>
       <div className={style.cardContainer}>
         {currentDogs.map(

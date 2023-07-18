@@ -1,5 +1,5 @@
 import { deleteDogId, getDogById, deleteDog } from "../../redux/actions";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,7 @@ const Detail = () => {
   const dog = useSelector((state) => state.detail);
   const { id } = useParams();
   const [isLoadingDetail, setIsLoadingDetail] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getDogById(id))
@@ -26,6 +27,8 @@ const Detail = () => {
       alert(response.error);
     } else {
       dispatch(deleteDogId());
+      navigate("/home");
+      window.location.reload();
     }
   };
 

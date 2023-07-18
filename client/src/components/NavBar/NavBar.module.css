@@ -68,17 +68,3 @@
   text-decoration: none;
   position: relative;
 }
-
-.linkTitle:hover::after {
-  content: "Click to reset filters!";
-  position: absolute;
-  top: 15px;
-  left: 40%;
-  width: 110px;
-  transform: translateX(40%);
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 12px;
-}

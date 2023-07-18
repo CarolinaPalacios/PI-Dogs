@@ -10,9 +10,15 @@
   text-decoration: none;
 }
 
+.filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .filterHeight {
   border-radius: 20px;
-  margin-top: 15px;
   color: #2e6466;
   font-weight: bold;
   cursor: pointer;
@@ -53,4 +59,45 @@
   font-weight: bold;
   cursor: pointer;
   box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.75);
+}
+
+.reset {
+  border-radius: 20px;
+  margin: 2px;
+  background-color: #4cb7bb;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.75);
+  border: 0.5px solid black;
+}
+
+.reset:active {
+  box-shadow: inset 35px 17px 48px 7px rgba(0, 0, 0, 0.8);
+}
+
+.reset:hover::after {
+  content: "Click to reset filters!";
+  position: absolute;
+  top: 15px;
+  left: 5%;
+  width: 110px;
+  transform: translateX(40%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 11px;
+}
+
+.logoreset {
+  width: 35px;
+  height: 1rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resetContainer {
+  position: relative;
 }
