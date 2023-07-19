@@ -1,3 +1,4 @@
+const getApi = require("../controllers/getApi");
 const { Dog } = require("../db");
 const { Op } = require("sequelize");
 const createValidator = async (req, res, next) => {
@@ -30,6 +31,16 @@ const createValidator = async (req, res, next) => {
   });
 
   if (dogExists)
+    return res
+      .status(400)
+      .json({ error: "There is already a dog with that name" });
+
+  const apiData = await getApi();
+  const apiDogExist = apiData.find(
+    (dog) => dog.name.toLowerCase() === name.toLowerCase()
+  );
+
+  if (apiDogExist)
     return res
       .status(400)
       .json({ error: "There is already a dog with that name" });
