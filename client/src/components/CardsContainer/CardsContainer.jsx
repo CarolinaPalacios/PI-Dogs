@@ -41,8 +41,7 @@ const CardsContainer = () => {
 
   useEffect(() => {
     const storedPage = localStorage.getItem("currentPage"); //almacenar el valor de la página actual en el almacenamiento local del navegador
-    if (storedPage && searchedDogName === "") {
-      // Restaurar la página actual solo si no se está realizando una búsqueda por nombre
+    if (storedPage) {
       setCurrentPage(parseInt(storedPage));
     } else {
       setCurrentPage(1); // Reset currentPage a 1 cuando busque por nombre
