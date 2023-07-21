@@ -4,14 +4,15 @@ const { Dog, Temperament } = require("../db");
 const getFromDb = async () => {
   const dbDog = await Dog.findAll({
     include: {
-      model: Temperament,
+      model: Temperament, //especifica q se debe incluir el modelo Temperament en la consulta
       attributes: ["name"], //atributos que quiero traer del modelo ( el id lo trae automático)
       through: {
-        attributes: [], //traer a través de los atributos del modelo
+        attributes: [], //indicarle a Sequelize que no incluya ningún atributo de la tabla intermedia en la consulta
       },
     },
   });
   const reDogs = dbDog?.map((dog) => {
+    //se crea un nuevo objeto para cada perro, extrayendo los atributos específicos
     return {
       id: dog.id,
       name: dog.name,
@@ -22,7 +23,7 @@ const getFromDb = async () => {
       age: dog.age,
       image: dog.image,
       createdInDB: dog.createdInDB,
-      temperament: dog.temperaments?.map((temperament) => temperament.name),
+      temperament: dog.temperaments?.map((temperament) => temperament.name), // extraer los temperamentos asociados a cada perro y crear un nuevo arreglo solo con los nombres de los temperamentos
     };
   });
   return reDogs;

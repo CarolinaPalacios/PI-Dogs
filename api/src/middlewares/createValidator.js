@@ -25,7 +25,7 @@ const createValidator = async (req, res, next) => {
   const dogExists = await Dog.findOne({
     where: {
       name: {
-        [Op.iLike]: `%${name}%`,
+        [Op.iLike]: `%${name}%`, //realizar una búsqueda de coincidencia parcial insensible a mayúsculas y minúsculas en un campo de texto de la base de datos
       },
     },
   });
@@ -47,4 +47,5 @@ const createValidator = async (req, res, next) => {
 
   next();
 };
+
 module.exports = createValidator;

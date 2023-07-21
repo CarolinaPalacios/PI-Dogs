@@ -28,7 +28,7 @@ const createDog = async (req, res) => {
 
     if (temperaments && temperaments.length > 0) {
       const temperamentCount = await Temperament.count();
-      //count() realizar una consulta y contar el número de registros que cumplen ciertas condiciones en una tabla de la base de datos
+      //realizar una consulta a la base de datos y contar el número de registros en la tabla Temperament
       if (temperamentCount === 0) await getAllTemperaments();
 
       await newDog.addTemperament(temperaments);

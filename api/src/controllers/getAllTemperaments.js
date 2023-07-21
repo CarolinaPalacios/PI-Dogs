@@ -19,6 +19,7 @@ const getAllTemperaments = async (req, res) => {
         });
       }
     });
+
     const tempsFound = await Temperament.findAll();
     return res.status(200).json(tempsFound); //Guardo todos los temperamentos
   } catch (error) {
