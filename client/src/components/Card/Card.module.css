@@ -3,12 +3,12 @@
   flex-direction: column;
   align-items: center;
   width: 210px;
-  height: 410px;
+  height: 280px;
   border-radius: 10px;
   box-shadow: 10px 10px 10px rgb(29, 28, 28);
   padding: 25px;
   margin: 20px;
-  background-color: #cad9ca;
+  background-color: #cad9cad3;
   transition: transform 0.3s;
 }
 
@@ -23,7 +23,7 @@
   margin-top: 5px;
   border-radius: 10px;
   width: 100%;
-  height: 150px;
+  height: 200px;
 }
 
 @font-face {
@@ -33,17 +33,21 @@
 
 .name {
   font-family: "Montserrat";
-  font-weight: 800;
+  font-weight: 600;
   color: #3b8183;
   margin-bottom: 0px;
 }
+
 .temperaments {
   font-family: "Montserrat";
   margin-top: 10px;
   color: #3b8183;
+  font-size: 18px;
 }
+
 .weight {
   font-family: "Montserrat";
   margin-bottom: 2px;
   color: #3b8183;
+  font-size: 17px;
 }

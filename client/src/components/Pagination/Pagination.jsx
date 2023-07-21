@@ -3,8 +3,8 @@ import style from "./Pagination.module.css";
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
-      onPageChange(page);
-      localStorage.setItem("currentPage", page.toString());
+      onPageChange(page); // actualizar el estado de la página actual en el componente padre
+      localStorage.setItem("currentPage", page.toString()); //guardar el número de página seleccionado en el almacenamiento local del navegador
     }
   };
 

@@ -59,7 +59,7 @@ export const getDogByName = (name) => {
         payload: data,
       });
     } catch (error) {
-      alert(error.response.data);
+      return { error: error.response.data };
     }
   };
 };
@@ -71,7 +71,7 @@ export const getTemperaments = () => {
       const { data } = await axios.get(endpoint);
       return dispatch({
         type: GET_TEMPERAMENTS,
-        payload: [...data],
+        payload: [...data], //esto garantiza que payload siempre será un array, incluso si data ya era un array
       });
     } catch (error) {
       console.log(error.message);

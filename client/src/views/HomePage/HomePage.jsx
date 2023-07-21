@@ -30,7 +30,6 @@ const HomePage = () => {
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
-        console.log(error);
       }
     };
 

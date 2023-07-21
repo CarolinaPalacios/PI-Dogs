@@ -51,7 +51,7 @@ const reducer = (state = initialState, { type, payload }) => {
     case GET_DOG_BY_NAME:
       return {
         ...state,
-        dogs: payload,
+        dogsCopy: payload,
       };
 
     case GET_TEMPERAMENTS:
@@ -110,8 +110,8 @@ const reducer = (state = initialState, { type, payload }) => {
     case ORDER_BY_NAME:
       const sortedByName = [...state.dogs].sort((dogA, dogB) => {
         return (
-          dogA.name.localeCompare(dogB.name, "en", {
-            //compara los nombres de los perros. 'en' para especificar que se debe utilizar el idioma inglés y { sensitivity: 'base' } indica que la comparación debe ser sensible a las diferencias de mayúsculas y minúsculas.
+          dogA.name.localeCompare(dogB.name, {
+            //compara los nombres de los perros. { sensitivity: 'base' } indica que la comparación debe ser sensible a las diferencias de mayúsculas y minúsculas.
             sensitivity: "base",
           }) * (payload === "Asc" ? 1 : -1)
         );
@@ -153,7 +153,7 @@ const reducer = (state = initialState, { type, payload }) => {
 
       return {
         ...state,
-        dogs: filteredDogs, // Actualiza 'dogs' en lugar de 'dogsCopy'
+        dogs: filteredDogs,
         filters: {
           ...state.filters,
           temperament: payload,

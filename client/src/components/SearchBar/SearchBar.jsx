@@ -11,16 +11,21 @@ const SearchBar = () => {
 
   const [dogName, setDogName] = useState("");
 
-  const handleSubmit = () => {
-    if (dogName.length > 0) {
-      dispatch(getDogByName(dogName));
-      navigate(`/home?name=${dogName}`);
-      setDogName("");
-    }
-  };
-
   const handleChange = (event) => {
     setDogName(event.target.value);
+  };
+
+  const handleSubmit = async () => {
+    if (dogName.length > 0) {
+      const result = await dispatch(getDogByName(dogName));
+
+      if (result && result.error) {
+        alert(result.error);
+        setDogName("");
+        navigate("/home");
+      } else navigate(`/home?name=${dogName}`);
+      setDogName("");
+    } else alert("Please enter a valid dog name.");
   };
 
   return (

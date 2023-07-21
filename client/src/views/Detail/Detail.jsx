@@ -15,10 +15,7 @@ const Detail = () => {
   useEffect(() => {
     dispatch(getDogById(id))
       .then(() => setIsLoadingDetail(false))
-      .catch((error) => console.log(error));
-    return () => {
-      dispatch(deleteDogId());
-    };
+      .catch((error) => alert(error));
   }, [dispatch, id]);
 
   const handleDelete = async (id) => {

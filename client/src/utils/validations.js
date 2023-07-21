@@ -15,9 +15,9 @@ const validations = (formData) => {
   } else if (typeof parseInt(formData.minHeight) !== "number") {
     errors.minHeight = "Invalid height, only numbers allowed";
   } else {
-    const heightPattern = /^([9]|[1-9][0-9]|110)$/;
+    const heightPattern = /^(9\d|[1-9]\d|10\d|110)$/;
     if (!heightPattern.test(formData.minHeight))
-      errors.minHeight = "Invalid height, must be between 9cm and 110cm";
+      errors.minHeight = "Invalid height, must be between 10cm and 110cm";
   }
 
   if (!formData.maxHeight || !formData.maxHeight.trim()) {
@@ -25,9 +25,9 @@ const validations = (formData) => {
   } else if (typeof parseInt(formData.maxHeight) !== "number") {
     errors.maxHeight = "Invalid height, only numbers allowed";
   } else {
-    const heightPattern = /^([9]|[1-9][0-9]|110)$/;
+    const heightPattern = /^(9\d|[1-9]\d|10\d|110)$/;
     if (!heightPattern.test(formData.maxHeight))
-      errors.maxHeight = "Invalid height, must be between 9cm and 110cm";
+      errors.maxHeight = "Invalid height, must be between 10cm and 110cm";
   }
 
   if (
@@ -88,8 +88,6 @@ const validations = (formData) => {
 
   if (!formData.image || !formData.image.trim()) {
     errors.image = "Image URL is required";
-  } else if (formData.image.length > 200) {
-    errors.image = "Image URL cannot exceed 200 characters";
   } else {
     const urlPattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
     const imagePattern = /\.(jpeg|jpg|gif|png|svg)$/i;

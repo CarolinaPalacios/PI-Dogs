@@ -24,14 +24,10 @@ const Form = () => {
   });
 
   const [selectedTemperaments, setSelectedTemperaments] = useState([]);
-  const [filterValue] = useState(""); //este estado es un valor constante y no cambia durante la ejecución del componente. En este caso, se utiliza como un valor estático para filtrar los temperamentos disponibles.
+
   const [errors, setErrors] = useState({});
 
-  const filteredTemperaments = temperaments?.filter(
-    (temp) => temp.name.includes(filterValue) //como filterValue es un string vacío, todos los elementos de temperaments se incluirán en el nuevo array sin ningún cambio
-  );
-
-  const sortedTemps = filteredTemperaments?.sort((a, b) =>
+  const sortedTemps = temperaments?.sort((a, b) =>
     a.name.localeCompare(b.name)
   );
 
@@ -51,7 +47,7 @@ const Form = () => {
 
   const handleSelect = (event) => {
     //* Selección de temperamentos para que se mantengan los seleccionados
-    const selectedTemperament = filteredTemperaments.find(
+    const selectedTemperament = temperaments.find(
       (temp) => temp.name === event.target.value
     );
     if (
@@ -75,8 +71,9 @@ const Form = () => {
     const validationErrors = validations(formData);
 
     if (Object.keys(validationErrors).length === 0) {
+      //   ↑   devuelve un array con todas las propiedades (claves) del objeto
       const selectedTemperamentNames = selectedTemperaments.map(
-        (temp) => temp.id
+        (temp) => temp.id //devuelve el valor de su propiedad id, contiene solo los nombres de los temperamentos
       );
 
       const dogData = {
@@ -121,8 +118,9 @@ const Form = () => {
     formData.maxWeight &&
     formData.age &&
     formData.image &&
-    selectedTemperaments.length > 0;
-  // Verificar si todos los campos del formulario están completos
+    selectedTemperaments.length > 0 &&
+    Object.keys(errors).length === 0;
+  // Verificar si todos los campos del formulario están completos y si no hay errores
 
   return (
     <form onSubmit={handleSubmit} className={style.container}>
@@ -240,14 +238,14 @@ const Form = () => {
             className={style.select}
           >
             <option value="">Select</option>
-            {sortedTemps?.sort().map((temp) => (
+            {sortedTemps?.map((temp) => (
               <option key={temp.id} value={temp.name}>
                 {temp.name}
               </option>
             ))}
           </select>
           <div>
-            {selectedTemperaments?.sort().map((temp) => (
+            {selectedTemperaments?.map((temp) => (
               <div key={temp.id}>
                 <span className={style.span}>{temp.name}</span>
                 <button
